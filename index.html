@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RJ Egg Dairy – Farm Fresh Eggs Direct from the Hen Farm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=Nunito:wght@400;600;700&display=swap">
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#fff9ec;--surface:#ffffff;--text:#3a2a14;--muted:#7a6648;--accent:#e8a317;--accent-d:#b57a00;--green:#3f7d3a;--border:#f0e1b8;--hero:#ffe9a8;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#1a1409;--surface:#261e0f;--text:#fbefd2;--muted:#c4b08a;--accent:#f2b630;--accent-d:#f2b630;--green:#7fc47a;--border:#3d2f16;--hero:#33260e}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#1a1409;--surface:#26 1e0f;--surface:#26200f;--text:#fbefd2;--muted:#c4b08a;--accent:#f2b630;--accent-d:#f2b630;--green:#7fc47a;--border:#3d2f16;--hero:#33260e}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Nunito',system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.2;margin:0}
+a{color:inherit}
+.wrap{max-width:1050px;margin:auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--border);z-index:20}
+nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;flex-wrap:wrap}
+.logo{font-family:'Fraunces',serif;font-weight:800;font-size:1.3rem;text-decoration:none}
+.logo span{color:var(--accent-d)}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;font-weight:700;font-size:.95rem}
+nav a{text-decoration:none}nav ul a:hover{color:var(--accent-d)}
+.btn{display:inline-block;background:var(--accent);color:#2b1d00;font-weight:800;border:0;border-radius:999px;padding:12px 24px;text-decoration:none;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn:hover{filter:brightness(1.07)}
+.btn.alt{background:transparent;border:2px solid var(--accent);color:var(--text)}
+.hero{background:var(--hero);padding:64px 0}
+.hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem)}
+.hero h1 em{color:var(--accent-d);font-style:normal}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:34em}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.eggs{font-size:clamp(5rem,16vw,9rem);text-align:center;filter:drop-shadow(0 12px 12px rgba(0,0,0,.15))}
+section{padding:60px 0}
+.sec-title{text-align:center;margin-bottom:34px}
+.sec-title h2{font-size:clamp(1.6rem,4vw,2.2rem)}
+.sec-title p{color:var(--muted);margin:6px 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px}
+.card .ic{font-size:2rem}
+.card h3{font-size:1.15rem;margin:8px 0 4px}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.price{font-weight:800;color:var(--accent-d);font-size:1.2rem;margin:8px 0}
+.qty{display:flex;align-items:center;gap:10px;margin-top:10px}
+.qty button{width:36px;height:36px;border-radius:50%;border:2px solid var(--accent);background:transparent;color:var(--text);font-size:1.2rem;font-weight:800;cursor:pointer}
+.qty output{min-width:24px;text-align:center;font-weight:800}
+.order{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;margin-top:22px}
+.order label{display:block;font-weight:700;margin-top:12px;font-size:.92rem}
+.order input,.order textarea{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;margin-top:4px}
+.total{display:flex;justify-content:space-between;font-size:1.2rem;font-weight:800;margin-top:16px;padding-top:12px;border-top:1px dashed var(--border)}
+.err{color:#c0392b;font-weight:700;min-height:1.4em;margin:8px 0 0}
+.alt-bg{background:var(--surface);border-block:1px solid var(--border)}
+.steps{counter-reset:s}
+.steps .card{position:relative;padding-top:44px}
+.steps .card::before{counter-increment:s;content:counter(s);position:absolute;top:-4px;left:20px;width:38px;height:38px;border-radius:50%;background:var(--accent);color:#2b1d00;font-weight:800;display:grid;place-items:center;transform:translateY(8px)}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.contact .card a{font-weight:800;color:var(--accent-d);text-decoration:none;font-size:1.15rem}
+footer{background:#2b1d00;color:#fbefd2;text-align:center;padding:26px 20px;font-size:.92rem}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr;text-align:center}.hero p{margin:auto}.cta{justify-content:center}nav ul{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+  <a class="logo" href="#home">🥚 RJ Egg <span>Dairy</span></a>
+  <ul><li><a href="#why">Why Us</a></li><li><a href="#products">Products</a></li><li><a href="#how">How It Works</a></li><li><a href="#contact">Contact</a></li></ul>
+  <a class="btn" href="tel:+919912723969">📞 Call Now</a>
+</nav></div></header>
+
+<main id="home">
+<div class="hero"><div class="wrap">
+  <div>
+    <h1>Fresh eggs, straight from <em>our hen farm</em> to your home.</h1>
+    <p>No middlemen, no long storage. RJ Egg Dairy brings you farm-fresh eggs at honest prices, directly from our farm in Kunikinapadu.</p>
+    <div class="cta"><a class="btn" href="#products">Order Eggs</a><a class="btn alt" href="#contact">Visit the Farm</a></div>
+  </div>
+  <div class="eggs" aria-hidden="true">🐔🥚</div>
+</div></div>
+
+<section id="why"><div class="wrap">
+  <div class="sec-title"><h2>Why buy from RJ Egg Dairy?</h2><p>The freshest eggs come from the people who raise the hens.</p></div>
+  <div class="grid">
+    <div class="card"><div class="ic">🌾</div><h3>Direct from the farm</h3><p>Buy straight from the hen farm. No traders in between, so you get better freshness and better value.</p></div>
+    <div class="card"><div class="ic">✅</div><h3>Fresh &amp; clean</h3><p>Eggs are collected daily, sorted and packed carefully to reach you in perfect condition.</p></div>
+    <div class="card"><div class="ic">💰</div><h3>Fair prices</h3><p>Farm-gate pricing with special rates for bulk buyers, hotels, tiffin centres and bakeries.</p></div>
+    <div class="card"><div class="ic">💪</div><h3>Rich nutrition</h3><p>A natural source of protein, vitamins and minerals for the whole family.</p></div>
+  </div>
+</div></section>
+
+<section id="products" class="alt-bg"><div class="wrap">
+  <div class="sec-title"><h2>Our Products</h2><p>Choose your quantity and send your order on WhatsApp.</p></div>
+  <div class="grid" id="productGrid"></div>
+
+  <form class="order" id="orderForm" novalidate>
+    <h3>Your order</h3>
+    <label for="name">Your name</label><input id="name" autocomplete="name" placeholder="Enter your name">
+    <label for="phone">Phone number</label><input id="phone" type="tel" autocomplete="tel" placeholder="10-digit mobile number">
+    <label for="addr">Delivery address / pickup</label><textarea id="addr" rows="2" placeholder="Address, or write “Farm pickup”"></textarea>
+    <div class="total"><span>Total</span><span id="total">₹0</span></div>
+    <p class="err" id="err" role="alert"></p>
+    <button class="btn" type="submit">Send order on WhatsApp</button>
+  </form>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <div class="sec-title"><h2>How it works</h2><p>Three simple steps from our hens to your kitchen.</p></div>
+  <div class="grid steps">
+    <div class="card"><h3>Pick your eggs</h3><p>Select the product and quantity you need above.</p></div>
+    <div class="card"><h3>Send your order</h3><p>Tap the button and your order opens in WhatsApp, ready to send. You can also just call us.</p></div>
+    <div class="card"><h3>Get fresh eggs</h3><p>Collect from the farm or have them delivered, as agreed with us.</p></div>
+  </div>
+</div></section>
+
+<section id="contact" class="alt-bg"><div class="wrap">
+  <div class="sec-title"><h2>Contact RJ Egg Dairy</h2><p>Call us for orders, bulk rates and farm visits.</p></div>
+  <div class="contact">
+    <div class="card"><div class="ic">📞</div><h3>Phone</h3><p><a href="tel:+919912723969">99127 23969</a></p></div>
+    <div class="card"><div class="ic">💬</div><h3>WhatsApp</h3><p><a href="https://wa.me/919912723969">Chat with us</a></p></div>
+    <div class="card"><div class="ic">📍</div><h3>Farm address</h3><p>RJ Egg Dairy<br>Kunikinapadu,<br>NTR District, Andhra Pradesh</p></div>
+  </div>
+</div></section>
+</main>
+
+<footer>© <span id="yr"></span> RJ Egg Dairy · Kunikinapadu, NTR District, Andhra Pradesh · 📞 99127 23969</footer>
+
+<script>
+// Prices are sample values – edit them here to match your real rates.
+const products=[
+  {id:'tray',emoji:'🥚',name:'Egg Tray (30 eggs)',desc:'Fresh white eggs, packed in a standard tray.',price:180},
+  {id:'dozen',emoji:'🥚',name:'Dozen Eggs (12)',desc:'Perfect for small families and daily use.',price:75},
+  {id:'country',emoji:'🐓',name:'Country Hen Eggs (12)',desc:'Brown eggs from free-range country hens.',price:140},
+  {id:'bulk',emoji:'📦',name:'Bulk Box (360 eggs)',desc:'12 trays for hotels, bakeries and shops.',price:2100}
+];
+const qty={};
+const grid=document.getElementById('productGrid');
+products.forEach(p=>{
+  qty[p.id]=0;
+  const d=document.createElement('div');d.className='card';
+  d.innerHTML=`<div class="ic">${p.emoji}</div><h3>${p.name}</h3><p>${p.desc}</p><div class="price">₹${p.price}</div>
+  <div class="qty"><button type="button" aria-label="Decrease ${p.name}" data-id="${p.id}" data-d="-1">−</button><output id="q-${p.id}">0</output><button type="button" aria-label="Increase ${p.name}" data-id="${p.id}" data-d="1">+</button></div>`;
+  grid.appendChild(d);
+});
+grid.addEventListener('click',e=>{
+  const b=e.target.closest('button[data-id]');if(!b)return;
+  const id=b.dataset.id;qty[id]=Math.max(0,qty[id]+Number(b.dataset.d));
+  document.getElementById('q-'+id).textContent=qty[id];update();
+});
+function total(){return products.reduce((s,p)=>s+p.price*qty[p.id],0)}
+function update(){document.getElementById('total').textContent='₹'+total().toLocaleString('en-IN')}
+document.getElementById('orderForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=document.getElementById('name').value.trim(),phone=document.getElementById('phone').value.trim(),addr=document.getElementById('addr').value.trim(),err=document.getElementById('err');
+  if(total()===0){err.textContent='Please add at least one product.';return}
+  if(!name||!/^\d{10}$/.test(phone.replace(/\D/g,'').slice(-10))||!addr){err.textContent='Please fill in your name, a valid 10-digit phone number and address.';return}
+  err.textContent='';
+  const lines=products.filter(p=>qty[p.id]>0).map(p=>`• ${p.name} × ${qty[p.id]} = ₹${p.price*qty[p.id]}`).join('\n');
+  const msg=`Hello RJ Egg Dairy, I'd like to order:\n${lines}\nTotal: ₹${total()}\n\nName: ${name}\nPhone: ${phone}\nAddress: ${addr}`;
+  const a=document.createElement('a');a.href='https://wa.me/919912723969?text='+encodeURIComponent(msg);a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();
+});
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
